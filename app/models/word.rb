@@ -1,4 +1,4 @@
 class Word < ApplicationRecord
-  validates :ru, length: { minimum: 3 }
-  validates :en, length: { minimum: 3 }
+  validates :ru, :en, presence: true, length: { minimum: 3, maximum: 30 }
+  validates :en, uniqueness: true
 end
