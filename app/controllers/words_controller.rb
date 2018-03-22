@@ -3,7 +3,7 @@ class WordsController < ApplicationController
   before_action :authorize
 
   def index
-    @words = Word.all
+    @words = @current_user.words
   end
 
   def new
@@ -12,6 +12,7 @@ class WordsController < ApplicationController
 
   def create
     @word = Word.new(word_params)
+    @word.user_id = @current_user.id
 
     if @word.save
       redirect_to words_path
