@@ -22,11 +22,11 @@ class WordsController < ApplicationController
   end
 
   def edit
-    @word = Word.find(params[:id])
+    @word = @current_user.words.find(params[:id])
   end
 
   def update
-    @word = Word.find(params[:id])
+    @word = @current_user.word.find(params[:id])
 
     if @word.update(word_params)
       redirect_to words_path
@@ -36,7 +36,7 @@ class WordsController < ApplicationController
   end
 
   def destroy
-    @word = Word.find(params[:id])
+    @word = @current_user.words.find(params[:id])
     @word.destroy
 
     redirect_to words_path
