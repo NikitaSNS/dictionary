@@ -31,6 +31,8 @@ gem 'bootstrap', '~> 4.0'
 
 gem 'faker'
 
+gem 'bcrypt'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

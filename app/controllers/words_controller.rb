@@ -1,4 +1,7 @@
 class WordsController < ApplicationController
+
+  before_action :authorize
+
   def index
     @words = Word.all
   end
