@@ -9,12 +9,17 @@ class UsersController < ApplicationController
       session[:user_id] = user.id
       redirect_to '/'
     else
-      redirect_to '/signup'
+      if params[:password] != params[:password_confirmation]
+        flash[:danger] = "Пароли не совпадают"
+      else
+        flash[:danger] = "Ошибка"
+      end
+      redirect_to route_for'signup'
     end
   end
 
   private def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    params.permit(:name, :email, :password, :password_confirmation)
   end
 
 end
